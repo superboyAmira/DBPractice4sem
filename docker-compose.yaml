@@ -1,0 +1,14 @@
+services:
+  db:
+    restart: always
+    image: postgres:15.2
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: practice-db
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+#      - ./internal/dbinit/init_table.sql:/docker-entrypoint-initdb.d/001.sql
+#      - ./internal/dbinit/init_demodata.sql:/docker-entrypoint-initdb.d/002.sql
+    ports:
+      - 5442:5432
