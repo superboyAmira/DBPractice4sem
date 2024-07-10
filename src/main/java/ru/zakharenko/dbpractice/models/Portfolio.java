@@ -1,5 +1,7 @@
 package ru.zakharenko.dbpractice.models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -24,7 +26,7 @@ public class Portfolio {
 		return id;
 	}
 
-	@OneToOne
+	@OneToOne(mappedBy = "investor", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@Column(name = "investor_id", nullable = false)
 	public Investor getInvestor() {
 		return this.investor_id;
