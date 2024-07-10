@@ -25,20 +25,20 @@ public class Transaction {
 		return id;
 	}
 
-	@ManyToOne
-	@Column(name = "seller_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name = "seller_id", nullable = true)
 	public Investor getSeller() {
 		return seller;
 	}
 
-	@ManyToOne
-	@Column(name = "buyer_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Column(name = "buyer_id", nullable = true)
 	public Investor getBuyer() {
 		return buyer;
 	}
 
-	@OneToOne
-	@Column(name = "security_id", nullable = false)
+	@OneToOne(mappedBy = "security")
+	@Column(name = "security_id", nullable = true)
 	public Security getSecurity() {
 		return security;
 	}

@@ -12,7 +12,7 @@ import java.util.UUID;
 public class Security {
 	private UUID id;
 	private String name;
-	private StockType type;
+	private SecurityType type;
 	private String ticker;
 	private Integer currentPrice;
 	private Integer avgVolume;
@@ -30,7 +30,7 @@ public class Security {
 	}
 
 	@Column(name = "type", nullable = false)
-	public StockType getType() {
+	public SecurityType getType() {
 		return type;
 	}
 
@@ -57,7 +57,7 @@ public class Security {
 		this.name = name;
 	}
 
-	public void setType(StockType type) {
+	public void setType(SecurityType type) {
 		this.type = type;
 	}
 

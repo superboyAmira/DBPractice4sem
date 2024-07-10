@@ -1,6 +1,6 @@
 package ru.zakharenko.dbpractice.models;
 
-public enum StockType {
+public enum SecurityType {
 	Stock,
 	Bond,
 	Future

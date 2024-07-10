@@ -6,6 +6,7 @@ import java.util.UUID;
 
 /* To-do
  * Обработка закрытия позиции при транзакции связанной с ней
+ * Обработка удаления бумаги (позиция заблокирована, но не удалена!)
  */
 
 @Entity
@@ -25,13 +26,13 @@ public class Position {
 		return id;
 	}
 
-	@OneToOne
+	@OneToOne(mappedBy = "portfolio", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@Column(name = "portfolio_id", nullable = false)
 	public Portfolio getPortfolio() {
 		return portfolio;
 	}
 
-	@OneToOne
+	@OneToOne(mappedBy = "portfolio", cascade = CascadeType.REMOVE, orphanRemoval = false)
 	@Column(name = "security_id", nullable = false)
 	public Security getSecurity() {
 		return security;
