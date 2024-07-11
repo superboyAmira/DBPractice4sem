@@ -1,9 +1,12 @@
 package ru.zakharenko.dbpractice.domain;
 
 import javax.persistence.*;
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+/*
+ * Добавить новые таблицы под Enum
+ */
 
 @Entity
 @Table(name = "investor")

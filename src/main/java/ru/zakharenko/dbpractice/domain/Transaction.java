@@ -12,7 +12,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "transaction")
 public class Transaction extends BaseDomain {
-	private UUID id;
 	private Investor seller;
 	private Investor buyer;
 	private Security security;
