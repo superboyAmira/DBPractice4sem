@@ -7,17 +7,11 @@ import java.util.regex.Pattern;
 
 @Entity
 @Table(name = "investor")
-public class Investor {
-	private UUID id;
+public class Investor extends BaseDomain {
 	private String name;
 	private String lastName;
 	private String birthDate;
 	private String email;
-
-	@Id
-	@GeneratedValue(generator = "org.hibernate.id.UUIDGenerator")
-	@Column(name = "id", unique = true, nullable = false)
-	UUID getId() { return this.id; }
 
 	@Column(name = "name", nullable = false, length = 15)
 	public String getName() {
@@ -37,10 +31,6 @@ public class Investor {
 	@Column(name = "email", nullable = false, unique = true)
 	public String getEmail() {
 		return email;
-	}
-
-	void setId(UUID id) {
-		this.id = id;
 	}
 
 	public void setName(String name) {

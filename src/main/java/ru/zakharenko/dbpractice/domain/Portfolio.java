@@ -9,20 +9,12 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "portfolio")
-public class Portfolio {
-	private UUID id;
+public class Portfolio extends BaseDomain {
 	private Investor investor_id;
 	private String name;
 	private PortfolioType type;
 	private Integer generalPortfolioMoney;
 	private Double profit;
-
-	@Id
-	@GeneratedValue(generator = "org.hibernate.id.UUIDGenerator")
-	@Column(name = "id", unique = true, nullable = false)
-	public UUID getId() {
-		return id;
-	}
 
 	@OneToOne(mappedBy = "investor", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@Column(name = "investor_id", nullable = false)
@@ -48,10 +40,6 @@ public class Portfolio {
 	@Column(name = "profit", nullable = false)
 	public Double getProfit() {
 		return profit;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
 	}
 
 	public void setInvestor(Investor investor) {

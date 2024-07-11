@@ -11,19 +11,12 @@ import java.util.UUID;
 */
 @Entity
 @Table(name = "transaction")
-public class Transaction {
+public class Transaction extends BaseDomain {
 	private UUID id;
 	private Investor seller;
 	private Investor buyer;
 	private Security security;
 	private TransactionType type;
-
-	@Id
-	@GeneratedValue(generator = "org.hibernate.id.UUIDGenerator")
-	@Column(name = "id", unique = true, nullable = false)
-	public UUID getId() {
-		return id;
-	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@Column(name = "seller_id", nullable = true)
@@ -46,10 +39,6 @@ public class Transaction {
 	@Column(name = "type", nullable = false)
 	public TransactionType getType() {
 		return type;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
 	}
 
 	public void setSeller(Investor seller) {

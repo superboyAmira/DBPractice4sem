@@ -9,20 +9,12 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "security")
-public class Security {
-	private UUID id;
+public class Security extends BaseDomain {
 	private String name;
 	private SecurityType type;
 	private String ticker;
 	private Integer currentPrice;
 	private Integer avgVolume;
-
-	@Id
-	@GeneratedValue(generator = "org.hibernate.id.UUIDGenerator")
-	@Column(name = "id", unique = true, nullable = false)
-	public UUID getId() {
-		return id;
-	}
 
 	@Column(name = "name", nullable = false)
 	public String getName() {
@@ -47,10 +39,6 @@ public class Security {
 	@Column(name = "avg_volume", nullable = false)
 	public Integer getAvgVolume() {
 		return avgVolume;
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
 	}
 
 	public void setName(String name) {
