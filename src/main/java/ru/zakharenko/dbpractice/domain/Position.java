@@ -1,4 +1,4 @@
-package ru.zakharenko.dbpractice.models;
+package ru.zakharenko.dbpractice.domain;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

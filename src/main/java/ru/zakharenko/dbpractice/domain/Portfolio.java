@@ -1,6 +1,4 @@
-package ru.zakharenko.dbpractice.models;
-
-import org.hibernate.annotations.Cascade;
+package ru.zakharenko.dbpractice.domain;
 
 import javax.persistence.*;
 import java.util.UUID;
