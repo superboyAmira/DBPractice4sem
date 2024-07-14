@@ -12,7 +12,8 @@ public class Portfolio extends BaseDomain {
 	private Investor investorId;
 	private String name;
 	private PortfolioType type;
-	private Integer generalPortfolioMoney;
+
+	private Double fiatMoney;
 	private Double profit;
 	private boolean status;
 
@@ -32,9 +33,9 @@ public class Portfolio extends BaseDomain {
 		return type;
 	}
 
-	@Column(name = "general_portfolio_money", nullable = false)
-	public Integer getGeneralPortfolioMoney() {
-		return generalPortfolioMoney;
+	@Column(name = "fiat_money", nullable = false)
+	public Double getFiatMoney() {
+		return fiatMoney;
 	}
 
 	@Column(name = "profit", nullable = false)
@@ -57,8 +58,8 @@ public class Portfolio extends BaseDomain {
 		this.type = type;
 	}
 
-	public void setGeneralPortfolioMoney(Integer generalPortfolioMoney) {
-		this.generalPortfolioMoney = generalPortfolioMoney;
+	public void setFiatMoney(Double generalPortfolioMoney) {
+		this.fiatMoney = generalPortfolioMoney;
 	}
 
 	public void setProfit(Double profit) {
