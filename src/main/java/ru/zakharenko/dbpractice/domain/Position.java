@@ -17,6 +17,7 @@ public class Position extends BaseDomain {
 	private Integer amount;
 	private Double priceBuy;
 	private Timestamp posDate;
+	private boolean status;
 
 	@OneToOne(mappedBy = "portfolio", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@Column(name = "portfolio_id", nullable = false)
@@ -45,6 +46,11 @@ public class Position extends BaseDomain {
 		return posDate;
 	}
 
+	@Column(name = "status", nullable = false)
+	public boolean getStatus() {
+		return status;
+	}
+
 	public void setPortfolio(Portfolio portfolio) {
 		this.portfolio = portfolio;
 	}
@@ -63,5 +69,9 @@ public class Position extends BaseDomain {
 
 	public void setPosDate(Timestamp posDate) {
 		this.posDate = posDate;
+	}
+
+	public void setStatus(boolean st) {
+		this.status = st;
 	}
 }

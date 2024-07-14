@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /*
- * Добавить новые таблицы под Enum
+добавить поле со всеми лист(эмаилы), для проверки
  */
 
 @Entity
@@ -15,6 +15,7 @@ public class Investor extends BaseDomain {
 	private String lastName;
 	private String birthDate;
 	private String email;
+	private boolean status;
 
 	@Column(name = "name", nullable = false, length = 15)
 	public String getName() {
@@ -36,6 +37,9 @@ public class Investor extends BaseDomain {
 		return email;
 	}
 
+	@Column(name = "status", nullable = false)
+	public boolean getStatus() { return this.status; };
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -56,4 +60,6 @@ public class Investor extends BaseDomain {
 			this.email = email;
 		}
 	}
+
+	public void setStatus(boolean status) { this.status = status; };
 }
