@@ -3,7 +3,6 @@ package ru.zakharenko.dbpractice.repository;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import ru.zakharenko.dbpractice.domain.Security;
-import ru.zakharenko.dbpractice.repository.domainRepository.InvestorSpecialRepository;
 import ru.zakharenko.dbpractice.repository.util.HibernateUtil;
 
 import java.util.List;
