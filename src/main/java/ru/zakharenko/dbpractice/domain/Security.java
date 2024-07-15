@@ -14,7 +14,6 @@ public class Security extends BaseDomain {
 	private SecurityType type;
 	private String ticker;
 	private Integer currentPrice;
-	private boolean status;
 //	private Integer avgVolume; не должна быть подсчитана сразу в бд, нужно вынести в домейн сервис
 
 	@Column(name = "name", nullable = false)
@@ -41,8 +40,6 @@ public class Security extends BaseDomain {
 //	public Integer getAvgVolume() {
 //		return avgVolume;
 //	}
-	@Column(name = "status", nullable = false)
-	public boolean getStatus() { return this.status; }
 
 	public void setName(String name) {
 		this.name = name;
@@ -59,8 +56,6 @@ public class Security extends BaseDomain {
 	public void setCurrentPrice(Integer currentPrice) {
 		this.currentPrice = currentPrice;
 	}
-
-	public void setStatus(boolean status) { this.status = status; }
 //	public void setAvgVolume(Integer avgVolume) {
 //		this.avgVolume = avgVolume;
 //	}

@@ -20,7 +20,7 @@ public class PortfolioSpecialService {
 		this.securityRepository = securityRepository;
 	}
 
-	public PortfolioRecommendations scenario2(Portfolio entity) {
+	public PortfolioRecommendations scenarioTwo(Portfolio entity) {
 		List<Position> openedPositions = portfolioRepository.getAllPositionLinkedPortfolio(entity); // все открытые позиции в портфеле
 		Double allSum = entity.getFiatMoney();
 		for (Position pos : openedPositions) {

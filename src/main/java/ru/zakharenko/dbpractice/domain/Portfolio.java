@@ -15,7 +15,6 @@ public class Portfolio extends BaseDomain {
 
 	private Double fiatMoney;
 	private Double profit;
-	private boolean status;
 
 	@OneToOne(mappedBy = "investor", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@Column(name = "investor_id", nullable = false)
@@ -43,9 +42,6 @@ public class Portfolio extends BaseDomain {
 		return profit;
 	}
 
-	@Column(name = "status", nullable = false)
-	public boolean getStatus() { return this.status; }
-
 	public void setInvestor(Investor investor) {
 		this.investorId = investor;
 	}
@@ -66,5 +62,4 @@ public class Portfolio extends BaseDomain {
 		this.profit = profit;
 	}
 
-	public void setStatus(boolean status) { this.status = status; }
 }

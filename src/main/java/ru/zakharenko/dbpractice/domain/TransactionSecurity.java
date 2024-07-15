@@ -16,7 +16,6 @@ public class TransactionSecurity extends BaseDomain {
 	private Investor buyer;
 	private Security security;
 	private TransactionType type;
-	private boolean status;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@Column(name = "seller_id", nullable = true)
@@ -41,9 +40,6 @@ public class TransactionSecurity extends BaseDomain {
 		return type;
 	}
 
-	@Column(name = "status", nullable = false)
-	public boolean getStatus() { return this.status; }
-
 	public void setSeller(Investor seller) {
 		this.seller = seller;
 	}
@@ -59,6 +55,4 @@ public class TransactionSecurity extends BaseDomain {
 	public void setType(TransactionType type) {
 		this.type = type;
 	}
-
-	public void setStatus(boolean status) { this.status = status; }
 }
