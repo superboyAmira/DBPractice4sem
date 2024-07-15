@@ -1,6 +1,5 @@
 package ru.zakharenko.dbpractice.repository;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import ru.zakharenko.dbpractice.domain.Investor;

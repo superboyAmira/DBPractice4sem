@@ -14,7 +14,7 @@ import java.util.UUID;
 public class ScenarioOneService {
 	PortfolioRepository portfolioRepository;
 
-	public ProfitStatistic scenarioOneAllPortfolio(Investor entity) {
+	public ProfitStatistic getProfitAllPortfolio(Investor entity) {
 		Map<UUID, Double> profitAll = new HashMap<>();
 		List<Portfolio> portfolio = portfolioRepository.getByInvestorId(entity);
 		for (Portfolio por : portfolio) {
@@ -26,7 +26,7 @@ public class ScenarioOneService {
 		return new ProfitStatistic(profitAll, profitAll.values().stream().mapToDouble(Double::doubleValue).sum());
 	}
 
-	public ProfitStatistic scenarioOneSinglePortfolio(Portfolio entity) {
+	public ProfitStatistic getProfitSinglePortfolio(Portfolio entity) {
 		Map<UUID, Double> profitAll = new HashMap<>();
 		List<Position> positions = portfolioRepository.getAllPositionLinkedPortfolio(entity);
 		for (Position pos : positions) {
