@@ -1,11 +1,7 @@
 package ru.zakharenko.dbpractice.service;
 
 import org.springframework.stereotype.Service;
-import ru.zakharenko.dbpractice.domain.Investor;
 import ru.zakharenko.dbpractice.domain.Portfolio;
-import ru.zakharenko.dbpractice.domain.Position;
-import ru.zakharenko.dbpractice.domainService.PortfolioSpecialService;
-import ru.zakharenko.dbpractice.repository.InvestorRepository;
 import ru.zakharenko.dbpractice.repository.PortfolioRepository;
 
 import java.util.List;

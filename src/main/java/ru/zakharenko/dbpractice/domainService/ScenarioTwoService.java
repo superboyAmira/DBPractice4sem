@@ -11,11 +11,11 @@ import ru.zakharenko.dbpractice.DTO.PortfolioRecommendations;
 import java.util.List;
 
 @Service
-public class PortfolioSpecialService {
+public class ScenarioTwoService {
 	private final PortfolioRepository portfolioRepository;
 	private final SecurityRepository securityRepository;
 
-	public PortfolioSpecialService(PortfolioRepository portfolioRepository, SecurityRepository securityRepository) {
+	public ScenarioTwoService(PortfolioRepository portfolioRepository, SecurityRepository securityRepository) {
 		this.portfolioRepository = portfolioRepository;
 		this.securityRepository = securityRepository;
 	}

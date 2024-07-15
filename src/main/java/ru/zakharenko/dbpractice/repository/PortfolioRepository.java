@@ -27,12 +27,9 @@ public class PortfolioRepository extends BaseRepositry<Portfolio> {
 		return null;
 	}
 
-	public Portfolio getByInvestorId(Investor investor) {
+	public List<Portfolio> getByInvestorId(Investor investor) {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			Query<Portfolio> query = session.createQuery("from Portfolio where investor.id = :investorId", Portfolio.class);
-			query.setParameter("investorId", investor.getId());
-			query.setMaxResults(1);
-			return query.uniqueResult();
+			return session.createQuery("from Portfolio where investor.id = :investorId", Portfolio.class).setParameter("investorId", investor.getId()).list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
