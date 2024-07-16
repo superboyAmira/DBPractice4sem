@@ -58,4 +58,7 @@ public abstract class BaseRepositry<DomainEntity> {
 		return null;
 	}
 
+	public DomainEntity changeVisible(DomainEntity entity) {
+		return this.update(entity);
+	}
 }

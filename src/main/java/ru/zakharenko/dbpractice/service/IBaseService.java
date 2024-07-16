@@ -8,4 +8,5 @@ public interface IBaseService<DomainEntity> {
 	List<DomainEntity> getAll();
 	DomainEntity getByUUID(UUID id);
 	DomainEntity update(DomainEntity entity);
+	DomainEntity changeVisible(DomainEntity entity);
 }

@@ -3,6 +3,7 @@ package ru.zakharenko.dbpractice.service;
 import ru.zakharenko.dbpractice.domain.TransactionSecurity;
 import ru.zakharenko.dbpractice.repository.TransactionSecurityRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,6 +31,19 @@ public class TransactionService implements IBaseService<TransactionSecurity> {
 
 	@Override
 	public List<TransactionSecurity> getAll() {
-		return transactionSecurityRepository.getAll();
+		List<TransactionSecurity> transactionSecurities = transactionSecurityRepository.getAll();
+		List<TransactionSecurity> finalList = new ArrayList<>();
+		for (TransactionSecurity transactionSecurity : transactionSecurities) {
+			if (transactionSecurity.getStatus()) {
+				finalList.add(transactionSecurity);
+			}
+		}
+		return finalList;
+	}
+
+	@Override
+	public TransactionSecurity changeVisible(TransactionSecurity transactionSecurity) {
+		transactionSecurity.setStatus((transactionSecurity.getStatus()) ? false : true);
+		return transactionSecurityRepository.changeVisible(transactionSecurity);
 	}
 }

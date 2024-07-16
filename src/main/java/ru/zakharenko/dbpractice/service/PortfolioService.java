@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.zakharenko.dbpractice.domain.Portfolio;
 import ru.zakharenko.dbpractice.repository.PortfolioRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,12 +16,24 @@ public class PortfolioService implements IBaseService<Portfolio> {
 		return repository.create(entity);
 	}
 	public List<Portfolio> getAll() {
-		return repository.getAll();
+		List<Portfolio> portfolioList = repository.getAll();
+		List<Portfolio> finalList = new ArrayList<>();
+		for (Portfolio por : portfolioList) {
+			if (por.getStatus()) {
+				finalList.add(por);
+			}
+		}
+		return finalList;
 	}
 	public Portfolio getByUUID(UUID id) {
 		return repository.getByUUID(id);
 	}
 	public Portfolio update(Portfolio entity) {
 		return repository.update(entity);
+	}
+
+	public Portfolio changeVisible(Portfolio entity) {
+		entity.setStatus((entity.getStatus()) ? false : true);
+		return repository.changeVisible(entity);
 	}
 }
