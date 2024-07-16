@@ -8,7 +8,19 @@ services:
       POSTGRES_DB: practice-db
     volumes:
       - ./pgdata:/var/lib/postgresql/data
-#      - ./internal/dbinit/init_table.sql:/docker-entrypoint-initdb.d/001.sql
-#      - ./internal/dbinit/init_demodata.sql:/docker-entrypoint-initdb.d/002.sql
     ports:
       - 5442:5432
+
+  app:
+    build: .
+    container_name: dbpractice
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/practice-db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./target:/app
