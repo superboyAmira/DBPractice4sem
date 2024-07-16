@@ -1,5 +1,6 @@
 package ru.zakharenko.dbpractice.service;
 
+import org.springframework.stereotype.Service;
 import ru.zakharenko.dbpractice.domain.Position;
 import ru.zakharenko.dbpractice.repository.PositionRepository;
 
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class PositionService implements IBaseService<Position> {
 	private PositionRepository positionRepository;
 
