@@ -15,7 +15,6 @@ public class InvestorService implements IBaseService<Investor> {
 	public Investor createEntity(Investor entity) {
 		return repository.create(entity);
 	}
-
 	public List<Investor> getAll() {
 		return repository.getAll();
 	}

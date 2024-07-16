@@ -1,5 +1,6 @@
 package ru.zakharenko.dbpractice.domainService;
 
+import org.springframework.stereotype.Service;
 import ru.zakharenko.dbpractice.DTO.LiquidityReport;
 import ru.zakharenko.dbpractice.domain.Portfolio;
 import ru.zakharenko.dbpractice.domain.Position;
@@ -12,14 +13,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class ScenarioThreeService {
 	TransactionSecurityRepository transactionSecurityRepository;
 	PortfolioRepository portfolioRepository;
-	public String isLiquidSecurity(Security security) {
-		List<TransactionSecurity> transactionSecurities = transactionSecurityRepository.getAllTransactionsOnSecurityThisMonth(security.getId());
-		Integer countSell = 0;
-		Integer countBuy = 0;
 
+	private String isLiquidSecurity(Security security) {
+		List<TransactionSecurity> transactionSecurities = transactionSecurityRepository.getAllTransactionsOnSecurityThisMonth(security.getId());
 		if (transactionSecurities.size() == 0) {
 			return "Security has no data on trading volume for this month yet";
 		}

@@ -1,5 +1,6 @@
 package ru.zakharenko.dbpractice.domainService;
 
+import org.springframework.stereotype.Service;
 import ru.zakharenko.dbpractice.DTO.ProfitStatistic;
 import ru.zakharenko.dbpractice.domain.Investor;
 import ru.zakharenko.dbpractice.domain.Portfolio;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+@Service
 public class ScenarioOneService {
 	PortfolioRepository portfolioRepository;
 
