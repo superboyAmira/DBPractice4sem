@@ -1,16 +1,10 @@
 package ru.zakharenko.dbpractice.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
-import java.util.UUID;
 
-/* To-do
-* Обработать создание зеркальных транзакций (SELL-BUY)
-* Валидация транзакции по открытой позиции продавца
-* Валидация транзакции по фиатным средствам покупателя
-* Кастомные конструкторы под требования алгоритмики бизнес-сценария
-* Здесь мы закинем лоигку в сервисы, так как размерность данных может быть огромной
-*/
 @Entity
 @Table(name = "transaction")
 public class TransactionSecurity extends BaseDomain {
@@ -34,19 +28,22 @@ public class TransactionSecurity extends BaseDomain {
 	public TransactionSecurity() {
 	}
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "seller_id", nullable = true)
+	@JoinColumn(name = "seller_id", referencedColumnName = "id", nullable = true)
+	@JsonBackReference
 	public Investor getSeller() {
 		return seller;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "buyer_id", nullable = true)
+	@JoinColumn(name = "buyer_id", referencedColumnName = "id", nullable = true)
+	@JsonBackReference
 	public Investor getBuyer() {
 		return buyer;
 	}
 
-	@ManyToOne
-	@JoinColumn
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "security_id", referencedColumnName = "id", nullable = true)
+	@JsonBackReference
 	public Security getSecurity() {
 		return security;
 	}

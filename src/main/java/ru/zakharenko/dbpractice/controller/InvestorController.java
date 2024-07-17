@@ -41,7 +41,7 @@ public class InvestorController {
 			@ApiResponse(responseCode = "204", description = "Investor is inactive")
 	})
 	@GetMapping("/{inv_id}/profit/all-portfolios")
-	public ResponseEntity<ProfitStatistic> getProfitAllPortfolios(@Parameter(description = "ID of the investor") @PathVariable UUID id) {
+	public ResponseEntity<ProfitStatistic> getProfitAllPortfolios(@Parameter(description = "ID of the investor") @PathVariable("inv_id") UUID id) {
 		Investor investor = investorService.getByUUID(id);
 		if (investor == null) {
 			return ResponseEntity.notFound().build();

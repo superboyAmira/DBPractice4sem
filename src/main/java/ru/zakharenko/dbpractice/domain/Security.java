@@ -1,22 +1,32 @@
 package ru.zakharenko.dbpractice.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import java.util.UUID;
-
-/* To-do
- * Алгоритм для подсчета объема торгов по бумаге.
- */
+import java.util.Set;
 
 @Entity
 @Table(name = "security")
 public class Security extends BaseDomain {
+
 	private String name;
 	private SecurityType type;
 	private String ticker;
 	private Integer currentPrice;
-
+	private Set<TransactionSecurity> transactions;
+	private Set<Position> positions;
 	public Security() {
 	}
+
+	@OneToMany(mappedBy = "security", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference
+	public Set<Position> getPositions() {
+		return positions;
+	}
+
+	public void setPositions(Set<Position> positions) {
+		this.positions = positions;
+	}
+
 	public Security(String name, SecurityType type, String ticker, Integer currentPrice) {
 		this.setStatus(true);
 		this.name = name;
@@ -46,6 +56,12 @@ public class Security extends BaseDomain {
 		return currentPrice;
 	}
 
+	@OneToMany(mappedBy = "security", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference
+	public Set<TransactionSecurity> getTransactions() {
+		return transactions;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -61,7 +77,8 @@ public class Security extends BaseDomain {
 	public void setCurrentPrice(Integer currentPrice) {
 		this.currentPrice = currentPrice;
 	}
-//	public void setAvgVolume(Integer avgVolume) {
-//		this.avgVolume = avgVolume;
-//	}
+
+	public void setTransactions(Set<TransactionSecurity> transactions) {
+		this.transactions = transactions;
+	}
 }

@@ -24,15 +24,15 @@ public class ScenarioThreeService {
 	private String isLiquidSecurity(Security security) {
 		List<TransactionSecurity> transactionSecurities = transactionSecurityRepository.getAllTransactionsOnSecurityThisMonth(security.getId());
 		if (transactionSecurities.size() == 0) {
-			return "ISecRepository has no data on trading volume for this month yet";
+			return "Security has no data on trading volume for this month yet";
 		}
 		String infoSecurity = " -> ADTV = " + transactionSecurities.size();
 		if (transactionSecurities.size() > 10) {
-			return "ISecRepository is very liquid and volotile" + infoSecurity;
+			return "Security is very liquid and volotile" + infoSecurity;
 		} else if (transactionSecurities.size() > 5) {
-			return "ISecRepository is in average demand" + infoSecurity;
+			return "Security is in average demand" + infoSecurity;
 		} else {
-			return "ISecRepository is not in strong demand, it will be difficult for you to find a buyer" + infoSecurity;
+			return "Security is not in strong demand, it will be difficult for you to find a buyer" + infoSecurity;
 		}
 	}
 

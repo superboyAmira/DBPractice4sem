@@ -24,8 +24,8 @@ public class PortRepository extends BaseRepository<Portfolio> implements IPortRe
 	@Override
 	@Transactional
 	public List<Position> getAllPositionLinkedPortfolio(Portfolio entity) {
-		return entityManager.createQuery("from Position where portfolio.id = :portfolioId", Position.class)
-				.setParameter("portfolioId", entity.getId())
+		return entityManager.createQuery("from Position where portfolio = :portfolioId", Position.class)
+				.setParameter("portfolioId", entity)
 				.getResultList();
 	}
 

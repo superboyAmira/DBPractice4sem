@@ -1,5 +1,7 @@
 package ru.zakharenko.dbpractice.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
 import java.util.UUID;
@@ -30,13 +32,15 @@ public class Position extends BaseDomain {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "portfolio", nullable = false)
+	@JoinColumn(name = "portfolio_id", referencedColumnName = "id", nullable = false)
+	@JsonBackReference
 	public Portfolio getPortfolio() {
 		return portfolio;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "security", nullable = false)
+	@JoinColumn(name = "security_id", referencedColumnName = "id", nullable = false)
+	@JsonBackReference
 	public Security getSecurity() {
 		return security;
 	}
