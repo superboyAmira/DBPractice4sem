@@ -2,7 +2,7 @@ package ru.zakharenko.dbpractice.service;
 
 import org.springframework.stereotype.Service;
 import ru.zakharenko.dbpractice.domain.TransactionSecurity;
-import ru.zakharenko.dbpractice.repository.TransactionSecurityRepository;
+import ru.zakharenko.dbpractice.repository.Implementations.TranRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,9 @@ import java.util.UUID;
 
 @Service
 public class TransactionService implements IBaseService<TransactionSecurity> {
-	private TransactionSecurityRepository transactionSecurityRepository;
+	private TranRepository transactionSecurityRepository;
 
-	public TransactionService(TransactionSecurityRepository repository) {
+	public TransactionService(TranRepository repository) {
 		this.transactionSecurityRepository = repository;
 	}
 

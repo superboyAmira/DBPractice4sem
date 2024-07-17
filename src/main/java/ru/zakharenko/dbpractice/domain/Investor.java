@@ -1,14 +1,8 @@
 package ru.zakharenko.dbpractice.domain;
 
-import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import java.util.UUID;
+import jakarta.persistence.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-/*
-добавить поле со всеми лист(эмаилы), для проверки
- */
 
 @Entity
 @Table(name = "investor")
@@ -18,15 +12,15 @@ public class Investor extends BaseDomain {
 	private String birthDate;
 	private String email;
 
-	public Investor(UUID id, Boolean status, String name, String lastName, String birthDate, String email) {
-		super(id, status);
+	public Investor() {
+	}
+	public Investor(String name, String lastName, String birthDate, String email) {
 		this.name = name;
 		this.lastName = lastName;
 		this.birthDate = birthDate;
+		this.setStatus(true);
 		setEmail(email);
 	}
-
-
 
 	@Column(name = "name", nullable = false, length = 15)
 	public String getName() {

@@ -1,20 +1,15 @@
 package ru.zakharenko.dbpractice.domain;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import java.util.UUID;
 
 @MappedSuperclass
 public abstract class BaseDomain {
 	private UUID id;
 	private boolean status;
-
-	public BaseDomain(UUID id, boolean status) {
-		this.id = id;
-		this.status = status;
-	}
 
 	@Id
 	@GeneratedValue(generator = "org.hibernate.id.UUIDGenerator")

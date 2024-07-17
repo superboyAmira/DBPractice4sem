@@ -2,7 +2,7 @@ package ru.zakharenko.dbpractice.service;
 
 import org.springframework.stereotype.Service;
 import ru.zakharenko.dbpractice.domain.Security;
-import ru.zakharenko.dbpractice.repository.SecurityRepository;
+import ru.zakharenko.dbpractice.repository.Implementations.SecRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import java.util.UUID;
 
 @Service
 public class SecurityService implements IBaseService<Security> {
-	private SecurityRepository securityRepository;
-	public SecurityService(SecurityRepository securityRepository) {
+	private SecRepository securityRepository;
+	public SecurityService(SecRepository securityRepository) {
 		this.securityRepository = securityRepository;
 	}
 	@Override

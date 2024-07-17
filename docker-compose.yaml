@@ -5,22 +5,9 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: practice-db
+      POSTGRES_DB: db
     volumes:
       - ./pgdata:/var/lib/postgresql/data
+#      - ./src/main/java/ru/zakharenko/dbpractice/webconfig/init_data.sql:/docker-entry-point-initdb.d/001.sql
     ports:
       - 5442:5432
-
-  app:
-    build: .
-    container_name: dbpractice
-    depends_on:
-      - db
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/practice-db
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./target:/app

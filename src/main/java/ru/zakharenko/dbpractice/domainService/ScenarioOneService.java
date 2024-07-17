@@ -1,11 +1,12 @@
 package ru.zakharenko.dbpractice.domainService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.zakharenko.dbpractice.DTO.ProfitStatistic;
 import ru.zakharenko.dbpractice.domain.Investor;
 import ru.zakharenko.dbpractice.domain.Portfolio;
 import ru.zakharenko.dbpractice.domain.Position;
-import ru.zakharenko.dbpractice.repository.PortfolioRepository;
+import ru.zakharenko.dbpractice.repository.Implementations.PortRepository;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +15,8 @@ import java.util.UUID;
 
 @Service
 public class ScenarioOneService {
-	PortfolioRepository portfolioRepository;
+	@Autowired
+	PortRepository portfolioRepository;
 
 	public ProfitStatistic getProfitAllPortfolio(Investor entity) {
 		Map<UUID, Double> profitAll = new HashMap<>();

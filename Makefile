@@ -8,5 +8,5 @@ up:
 
 rm:
 	docker-compose stop \
-	&& docker-compose rm \
-	&& sudo rm -rf $(PGDATA_LIB)
+	&& docker-compose rm
+# 	&& sudo rm -rf $(PGDATA_LIB)

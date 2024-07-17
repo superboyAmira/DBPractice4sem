@@ -36,7 +36,7 @@ public class SecurityController {
 	@Operation(summary = "Get a security by ID")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Found the security"),
-			@ApiResponse(responseCode = "404", description = "Security not found")
+			@ApiResponse(responseCode = "404", description = "ISecRepository not found")
 	})
 	@GetMapping("/{id}")
 	public ResponseEntity<Security> getSecurityById(@Parameter(description = "ID of the security") @PathVariable UUID id) {
@@ -49,7 +49,7 @@ public class SecurityController {
 
 	@Operation(summary = "Create a new security")
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "201", description = "Security created")
+			@ApiResponse(responseCode = "201", description = "ISecRepository created")
 	})
 	@PostMapping("/")
 	public ResponseEntity<Security> createSecurity(@RequestBody Security security) {
@@ -59,8 +59,8 @@ public class SecurityController {
 
 	@Operation(summary = "Update a security")
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "Security updated"),
-			@ApiResponse(responseCode = "404", description = "Security not found")
+			@ApiResponse(responseCode = "200", description = "ISecRepository updated"),
+			@ApiResponse(responseCode = "404", description = "ISecRepository not found")
 	})
 	@PutMapping("/{id}")
 	public ResponseEntity<Security> updateSecurity(@Parameter(description = "ID of the security") @PathVariable UUID id, @RequestBody Security security) {
@@ -75,9 +75,9 @@ public class SecurityController {
 
 	@Operation(summary = "Deactivate a security")
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "Security deactivated"),
-			@ApiResponse(responseCode = "404", description = "Security not found"),
-			@ApiResponse(responseCode = "403", description = "Security is already inactive")
+			@ApiResponse(responseCode = "200", description = "ISecRepository deactivated"),
+			@ApiResponse(responseCode = "404", description = "ISecRepository not found"),
+			@ApiResponse(responseCode = "403", description = "ISecRepository is already inactive")
 	})
 	@PutMapping("/{id}/deactivate")
 	public ResponseEntity<Security> deactivateSecurity(@Parameter(description = "ID of the security") @PathVariable UUID id) {
@@ -94,9 +94,9 @@ public class SecurityController {
 
 	@Operation(summary = "Activate a security")
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "Security activated"),
-			@ApiResponse(responseCode = "404", description = "Security not found"),
-			@ApiResponse(responseCode = "403", description = "Security is already active")
+			@ApiResponse(responseCode = "200", description = "ISecRepository activated"),
+			@ApiResponse(responseCode = "404", description = "ISecRepository not found"),
+			@ApiResponse(responseCode = "403", description = "ISecRepository is already active")
 	})
 	@PutMapping("/{id}/activate")
 	public ResponseEntity<Security> activateSecurity(@Parameter(description = "ID of the security") @PathVariable UUID id) {

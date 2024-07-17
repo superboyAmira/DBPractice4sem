@@ -1,6 +1,6 @@
 package ru.zakharenko.dbpractice.domain;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.UUID;
 
 /* To-do
@@ -14,11 +14,11 @@ public class Security extends BaseDomain {
 	private SecurityType type;
 	private String ticker;
 	private Integer currentPrice;
-//	private Integer avgVolume; не должна быть подсчитана сразу в бд, нужно вынести в домейн сервис
 
-
-	public Security(UUID id, boolean status, String name, SecurityType type, String ticker, Integer currentPrice) {
-		super(id, status);
+	public Security() {
+	}
+	public Security(String name, SecurityType type, String ticker, Integer currentPrice) {
+		this.setStatus(true);
 		this.name = name;
 		this.type = type;
 		this.ticker = ticker;
@@ -31,6 +31,7 @@ public class Security extends BaseDomain {
 	}
 
 	@Column(name = "type", nullable = false)
+	@Enumerated(EnumType.STRING)
 	public SecurityType getType() {
 		return type;
 	}
@@ -44,11 +45,6 @@ public class Security extends BaseDomain {
 	public Integer getCurrentPrice() {
 		return currentPrice;
 	}
-
-//	@Column(name = "avg_volume", nullable = false)
-//	public Integer getAvgVolume() {
-//		return avgVolume;
-//	}
 
 	public void setName(String name) {
 		this.name = name;

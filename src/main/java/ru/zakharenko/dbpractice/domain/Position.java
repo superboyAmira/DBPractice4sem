@@ -1,6 +1,6 @@
 package ru.zakharenko.dbpractice.domain;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -18,8 +18,10 @@ public class Position extends BaseDomain {
 	private Double priceBuy;
 	private Timestamp posDate;
 
-	public Position(UUID id, Boolean status, Portfolio portfolio, Security security, Integer amount, Double priceBuy, Timestamp posDate) {
-		super(id, status);
+	public Position() {
+	}
+	public Position(Portfolio portfolio, Security security, Integer amount, Double priceBuy, Timestamp posDate) {
+		this.setStatus(true);
 		this.portfolio = portfolio;
 		this.security = security;
 		this.amount = amount;
@@ -27,14 +29,14 @@ public class Position extends BaseDomain {
 		this.posDate = posDate;
 	}
 
-	@OneToOne(mappedBy = "portfolio", cascade = CascadeType.REMOVE, orphanRemoval = true)
-	@Column(name = "portfolio_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "portfolio", nullable = false)
 	public Portfolio getPortfolio() {
 		return portfolio;
 	}
 
-	@OneToOne(mappedBy = "portfolio", cascade = CascadeType.REMOVE, orphanRemoval = false)
-	@Column(name = "security_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "security", nullable = false)
 	public Security getSecurity() {
 		return security;
 	}

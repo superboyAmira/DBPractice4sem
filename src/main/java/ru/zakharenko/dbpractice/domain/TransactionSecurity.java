@@ -1,6 +1,6 @@
 package ru.zakharenko.dbpractice.domain;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -20,11 +20,10 @@ public class TransactionSecurity extends BaseDomain {
 	private TransactionType type;
 	private Timestamp trTime;
 
-	public TransactionSecurity(UUID id, boolean status,
-	                           Investor seller,
+	public TransactionSecurity(Investor seller,
 	                           Investor buyer,
 	                           Security security, TransactionType type, Timestamp trTime) {
-		super(id, status);
+		this.setStatus(true);
 		this.seller = seller;
 		this.buyer = buyer;
 		this.security = security;
@@ -32,25 +31,28 @@ public class TransactionSecurity extends BaseDomain {
 		this.trTime = trTime;
 	}
 
+	public TransactionSecurity() {
+	}
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name = "seller_id", nullable = true)
+	@JoinColumn(name = "seller_id", nullable = true)
 	public Investor getSeller() {
 		return seller;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Column(name = "buyer_id", nullable = true)
+	@JoinColumn(name = "buyer_id", nullable = true)
 	public Investor getBuyer() {
 		return buyer;
 	}
 
-	@OneToOne(mappedBy = "security")
-	@Column(name = "security_id", nullable = true)
+	@ManyToOne
+	@JoinColumn
 	public Security getSecurity() {
 		return security;
 	}
 
 	@Column(name = "type", nullable = false)
+	@Enumerated(EnumType.STRING)
 	public TransactionType getType() {
 		return type;
 	}

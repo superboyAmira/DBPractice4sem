@@ -2,7 +2,7 @@ package ru.zakharenko.dbpractice.service;
 
 import org.springframework.stereotype.Service;
 import ru.zakharenko.dbpractice.domain.Portfolio;
-import ru.zakharenko.dbpractice.repository.PortfolioRepository;
+import ru.zakharenko.dbpractice.repository.Implementations.PortRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import java.util.UUID;
 
 @Service
 public class PortfolioService implements IBaseService<Portfolio> {
-	private PortfolioRepository repository;
-	public PortfolioService(PortfolioRepository repository) { this.repository = repository; }
+	private PortRepository repository;
+	public PortfolioService(PortRepository repository) { this.repository = repository; }
 	public Portfolio createEntity(Portfolio entity) {
 		return repository.create(entity);
 	}

@@ -1,21 +1,23 @@
 package ru.zakharenko.dbpractice.domainService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.zakharenko.dbpractice.domain.Portfolio;
 import ru.zakharenko.dbpractice.domain.Position;
 import ru.zakharenko.dbpractice.domain.Security;
-import ru.zakharenko.dbpractice.repository.PortfolioRepository;
-import ru.zakharenko.dbpractice.repository.SecurityRepository;
 import ru.zakharenko.dbpractice.DTO.PortfolioRecommendations;
+import ru.zakharenko.dbpractice.repository.Implementations.PortRepository;
+import ru.zakharenko.dbpractice.repository.Implementations.SecRepository;
 
 import java.util.List;
 
 @Service
 public class ScenarioTwoService {
-	private final PortfolioRepository portfolioRepository;
-	private final SecurityRepository securityRepository;
+	private final PortRepository portfolioRepository;
+	private final SecRepository securityRepository;
 
-	public ScenarioTwoService(PortfolioRepository portfolioRepository, SecurityRepository securityRepository) {
+	@Autowired
+	public ScenarioTwoService(PortRepository portfolioRepository, SecRepository securityRepository) {
 		this.portfolioRepository = portfolioRepository;
 		this.securityRepository = securityRepository;
 	}

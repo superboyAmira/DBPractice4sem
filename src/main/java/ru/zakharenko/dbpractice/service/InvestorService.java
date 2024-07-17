@@ -1,9 +1,8 @@
 package ru.zakharenko.dbpractice.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.zakharenko.dbpractice.domain.Investor;
-import ru.zakharenko.dbpractice.repository.InvestorRepository;
+import ru.zakharenko.dbpractice.repository.Implementations.InvRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +10,8 @@ import java.util.UUID;
 
 @Service
 public class InvestorService implements IBaseService<Investor> {
-	private InvestorRepository repository;
-	public InvestorService(InvestorRepository repository) { this.repository = repository; }
+	private InvRepository repository;
+	public InvestorService(InvRepository repository) { this.repository = repository; }
 	public Investor createEntity(Investor entity) {
 		return repository.create(entity);
 	}
