@@ -11,6 +11,11 @@ public abstract class BaseDomain {
 	private UUID id;
 	private boolean status;
 
+	public BaseDomain(UUID id, boolean status) {
+		this.id = id;
+		this.status = status;
+	}
+
 	@Id
 	@GeneratedValue(generator = "org.hibernate.id.UUIDGenerator")
 	public UUID getId() {

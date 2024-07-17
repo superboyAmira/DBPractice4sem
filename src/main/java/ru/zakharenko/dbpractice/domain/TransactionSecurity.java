@@ -2,6 +2,7 @@ package ru.zakharenko.dbpractice.domain;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.UUID;
 
 /* To-do
 * Обработать создание зеркальных транзакций (SELL-BUY)
@@ -18,6 +19,18 @@ public class TransactionSecurity extends BaseDomain {
 	private Security security;
 	private TransactionType type;
 	private Timestamp trTime;
+
+	public TransactionSecurity(UUID id, boolean status,
+	                           Investor seller,
+	                           Investor buyer,
+	                           Security security, TransactionType type, Timestamp trTime) {
+		super(id, status);
+		this.seller = seller;
+		this.buyer = buyer;
+		this.security = security;
+		this.type = type;
+		this.trTime = trTime;
+	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@Column(name = "seller_id", nullable = true)

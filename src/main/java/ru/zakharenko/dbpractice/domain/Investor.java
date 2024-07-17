@@ -1,6 +1,8 @@
 package ru.zakharenko.dbpractice.domain;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,6 +17,15 @@ public class Investor extends BaseDomain {
 	private String lastName;
 	private String birthDate;
 	private String email;
+
+	public Investor(UUID id, Boolean status, String name, String lastName, String birthDate, String email) {
+		super(id, status);
+		this.name = name;
+		this.lastName = lastName;
+		this.birthDate = birthDate;
+		setEmail(email);
+	}
+
 
 
 	@Column(name = "name", nullable = false, length = 15)

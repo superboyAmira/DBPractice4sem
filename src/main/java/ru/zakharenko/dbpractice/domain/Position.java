@@ -18,6 +18,15 @@ public class Position extends BaseDomain {
 	private Double priceBuy;
 	private Timestamp posDate;
 
+	public Position(UUID id, Boolean status, Portfolio portfolio, Security security, Integer amount, Double priceBuy, Timestamp posDate) {
+		super(id, status);
+		this.portfolio = portfolio;
+		this.security = security;
+		this.amount = amount;
+		this.priceBuy = priceBuy;
+		this.posDate = posDate;
+	}
+
 	@OneToOne(mappedBy = "portfolio", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@Column(name = "portfolio_id", nullable = false)
 	public Portfolio getPortfolio() {

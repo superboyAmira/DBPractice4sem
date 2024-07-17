@@ -1,6 +1,7 @@
 package ru.zakharenko.dbpractice.domain;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 /* To-do
  * Ограничение на уменьшение количества средств при "выводе" в портфеле для типа ИИС.
@@ -16,6 +17,13 @@ public class Portfolio extends BaseDomain {
 	private Double fiatMoney;
 //	private Double profit;
 
+	public Portfolio(UUID id, Boolean status, Investor investorId, String name, PortfolioType type, Double fiatMoney) {
+		super(id, status);
+		this.investorId = investorId;
+		this.name = name;
+		this.type = type;
+		this.fiatMoney = fiatMoney;
+	}
 	@OneToOne(mappedBy = "investor", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@Column(name = "investor_id", nullable = false)
 	public Investor getInvestor() {

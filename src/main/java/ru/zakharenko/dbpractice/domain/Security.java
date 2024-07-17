@@ -16,6 +16,15 @@ public class Security extends BaseDomain {
 	private Integer currentPrice;
 //	private Integer avgVolume; не должна быть подсчитана сразу в бд, нужно вынести в домейн сервис
 
+
+	public Security(UUID id, boolean status, String name, SecurityType type, String ticker, Integer currentPrice) {
+		super(id, status);
+		this.name = name;
+		this.type = type;
+		this.ticker = ticker;
+		this.currentPrice = currentPrice;
+	}
+
 	@Column(name = "name", nullable = false)
 	public String getName() {
 		return name;
